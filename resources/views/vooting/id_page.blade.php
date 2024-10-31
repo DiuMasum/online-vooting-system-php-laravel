@@ -16,6 +16,7 @@
             align-items: center;
             justify-content: center;
         }
+
         .voting-container {
             background-color: #fff;
             border-radius: 12px;
@@ -24,21 +25,25 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             text-align: center;
         }
+
         .voting-container h2 {
             font-weight: bold;
             color: #333;
             margin-bottom: 1.5rem;
         }
+
         .form-control {
             border-radius: 8px;
             font-size: 16px;
         }
+
         .btn-primary {
             background: linear-gradient(45deg, #5a4de8, #7f85f3);
             font-weight: bold;
             border: none;
             border-radius: 8px;
         }
+
         .btn-primary:hover {
             background: linear-gradient(45deg, #7f85f3, #5a4de8);
         }
@@ -47,20 +52,41 @@
 
 <body>
 
+    @php
+        use Carbon\Carbon;
+
+        // Set the voting start and end times in the Dhaka timezone
+        $votingStartTime = Carbon::createFromFormat('d/m/Y H:i', '02/11/2024 06:00', 'Asia/Dhaka');
+        $votingEndTime = Carbon::createFromFormat('d/m/Y H:i', '02/11/2024 15:00', 'Asia/Dhaka');
+        $currentTime = Carbon::now('Asia/Dhaka');
+
+        // Check if the current time is within the voting window
+        $isVotingOpen = $currentTime->between($votingStartTime, $votingEndTime);
+    @endphp
+
     <div class="container voting-container">
-        <h2 class="text-primary">General Election</h2>
-        <div class="form-group mb-4">
-            <input type="text" name="id_number" id="id_number" class="form-control form-control-lg"
-                placeholder="Voting ID number" required />
-        </div>
-        <div>
-            <button type="button" class="btn btn-primary btn-lg w-100" onclick="checkID()">Submit</button>
-        </div>
+        <h2 class="text-primary">BIAS 2nd General Election 2024</h2>
+        <h6 class="text-primary">Voting Time: {{ $votingStartTime->format('d/m/Y H:i a') }} -
+            {{ $votingEndTime->format('H:i a') }}</h6>
+
+        @if ($isVotingOpen)
+            <!-- Voting is open -->
+            <a href="{{ route('vooting') }}" class="btn btn-primary btn-lg w-100">Start Your Vote</a>
+        @else
+            <!-- Voting is not open yet, disable the button -->
+            <button class="btn btn-secondary btn-lg w-100" disabled>Not open yet</button>
+        @endif
     </div>
 
 
 
-    <script>
+
+
+
+
+
+
+    {{-- <script>
         function checkID() {
             const idNumber = document.getElementById('id_number').value.trim();
 
@@ -84,7 +110,7 @@
                 console.error("Error:", error);
             });
         }
-    </script>
+    </script> --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>

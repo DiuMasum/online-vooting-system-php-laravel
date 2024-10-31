@@ -16,9 +16,28 @@ class VootController extends Controller
 
     public function VootingStore(Request $request)
     {
+         // Allowed ID numbers
+        $allowedIDs = ["201", "202", "203", "204", "205", "206", "207", "208", "209", "210"];
+
+        // Retrieve the ID number from the form input
+        $idNumber = $request->input('id_number');
+
+        // Check if the ID is allowed
+        if (!in_array($idNumber, $allowedIDs)) {
+            return redirect()->back()->withErrors(['id_number' => 'This ID is not allowed to vote.']);
+        }
+
+        // Check if the ID has already been used
+        if (VootStore::where('id_number', $idNumber)->exists()) {
+            return redirect()->back()->withErrors(['id_number' => 'This ID has already been used for voting.']);
+        }
+
+
+
+
+
         // Validate the input
         $validated = $request->validate([
-            'id_number' => 'required|string|max:255', // Validate the voter_name
             'president' => 'array|max:2',
             'vice_president' => 'array|max:5',
             'secretary' => 'array|max:2',
@@ -45,7 +64,7 @@ class VootController extends Controller
 
         // Save the vote in the database
         VootStore::create([
-            'id_number' => $validated['id_number'], 
+            'id_number' => $idNumber,
             'president' => $validated['president'] ?? [],
             'vice_president' => $validated['vice_president'] ?? [],
             'secretary' => $validated['secretary'] ?? [],
@@ -70,7 +89,7 @@ class VootController extends Controller
             'fourthexecutivemember' => $validated['fourthexecutivemember'] ?? [],
         ]);
 
-        return redirect()->route('vootingresult')->with('success', 'Your Vote Done successfully!');
+        return redirect()->route('thankyou')->with('success', 'Your Vote Done successfully!');
     }
 
     public function VootingResult()
@@ -305,6 +324,18 @@ class VootController extends Controller
         } else {
             return response()->json(['success' => false, 'message' => 'Invalid ID number.']);
         }
+    }
+
+
+
+    public function VoteCompletedId(){
+        $votecompleteid = VootStore::latest()->get();
+
+        return view('vooting.votecompletedid', compact('votecompleteid'));
+    }
+
+    public function ThankYou(){
+        return view('vooting.thankyou');
     }
 
 }

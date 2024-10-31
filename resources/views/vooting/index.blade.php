@@ -93,7 +93,7 @@
             {{-- President --}}
             <div style="background: rgb(241, 241, 241);" class="hover-bg rounded-sm">
                 <label class="form-label d-block h5 px-2 bg-primary py-2 text-white text-center fw-bold">Position:
-                    President</label>
+                    President (upto 1 vote)</label>
                 <div class="row row-cols-1 row-cols-md-12 g-4 p-3">
 
                     <div class="col">
@@ -126,7 +126,7 @@
             {{-- Vice President --}}
             <div style="background: rgb(241, 241, 241);" class="hover-bg rounded-sm mt-4">
                 <label class="form-label d-block h5 px-2 bg-primary py-2 text-white text-center fw-bold">Position: Vice
-                    President</label>
+                    President (upto 5 vote)</label>
                 <div class="row row-cols-1 row-cols-md-12 g-4 p-3">
 
                     <div class="col">
@@ -219,7 +219,7 @@
             {{-- General Secretary --}}
             <div style="background: rgb(241, 241, 241);" class="hover-bg rounded-sm mt-4">
                 <label class="form-label d-block h5 px-2 bg-primary py-2 text-white text-center fw-bold">Position:
-                    General Secretary</label>
+                    General Secretary  (upto 1 vote)</label>
                 <div class="row row-cols-1 row-cols-md-12 g-4 p-3">
 
                     <div class="col">
@@ -252,7 +252,7 @@
             {{-- Treasurer --}}
             <div style="background: rgb(241, 241, 241);" class="hover-bg rounded-sm mt-4">
                 <label class="form-label d-block h5 px-2 bg-primary py-2 text-white text-center fw-bold">Position:
-                    Treasurer</label>
+                    Treasurer  (upto 1 vote)</label>
                 <div class="row row-cols-1 row-cols-md-12 g-4 p-3">
 
                     <div class="col">
@@ -370,7 +370,7 @@
             {{-- Organising Secretary --}}
             <div style="background: rgb(241, 241, 241);" class="hover-bg rounded-sm mt-4">
                 <label class="form-label d-block h5 px-2 bg-primary py-2 text-white text-center fw-bold">Position:
-                    Organising Secretary</label>
+                    Organising Secretary  (upto 4 vote)</label>
                 <div class="row row-cols-1 row-cols-md-12 g-4 p-3">
 
                     <div class="col">
@@ -439,7 +439,7 @@
             {{-- Office Secretary --}}
             <div style="background: rgb(241, 241, 241);" class="hover-bg rounded-sm mt-4">
                 <label class="form-label d-block h5 px-2 bg-primary py-2 text-white text-center fw-bold">Position:
-                    Office Secretary</label>
+                    Office Secretary  (upto 1 vote)</label>
                 <div class="row row-cols-1 row-cols-md-12 g-4 p-3">
 
                     <div class="col">
@@ -661,7 +661,7 @@
             {{-- Assistant Treasurer --}}
             <div style="background: rgb(241, 241, 241);" class="hover-bg rounded-sm mt-4">
                 <label class="form-label d-block h5 px-2 bg-primary py-2 text-white text-center fw-bold">Position:
-                    Assistant Treasurer</label>
+                    Assistant Treasurer (upto 1 vote)</label>
                 <div class="row row-cols-1 row-cols-md-12 g-4 p-3">
 
                     <div class="col">
@@ -784,6 +784,17 @@
 
 
     <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const allowedIDs = ["201", "202", "203", "204", "205", "206", "207", "208", "209", "210"];
+            const idNumber = document.getElementById('id_number').value.trim();
+
+            if (!allowedIDs.includes(idNumber)) {
+                alert("This ID is not allowed to vote.");
+                event.preventDefault();
+            }
+        });
+
+
         // Fourth Executive Member Section: Limit to 1 selections
         const fourthecutivememberCheckboxes = document.querySelectorAll('.candidate-checkbox-fourth-executive-member');
 
