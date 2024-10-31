@@ -7,171 +7,469 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <title>General Election Results</title>
+    <style>
+        body {
+            background: rgb(4, 32, 66);
+            color: #495057;
+        }
+        .premium-card {
+            background: #ffffff;
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease;
+            padding: 1rem;
+        }
+        .premium-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background: linear-gradient(135deg, #6c757d, #343a40);
+            color: #ffffff;
+            border-radius: 8px 8px 0 0;
+            padding: 0.75rem;
+        }
+        .badge {
+            font-size: 1rem;
+            padding: 0.5rem 0.75rem;
+            background-color: #28a745;
+            color: white;
+        }
+        h4, h2 {
+            font-weight: bold;
+        }
+        h2.display-4 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #007bff;
+        }
+        .vote-count-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="container mt-5 mb-5">
+        <h2 class="text-center mb-4 text-primary display-4">Voting Results</h2>
         <div class="row g-4">
-            <h2 class="text-center mb-4 text-primary">Voting Results</h2>
-            <!-- Section for President -->
+
+             <!-- President Votes -->
             <div class="col-md-6">
-                <div class="card shadow-sm border-0">
-                    <div class="card-header bg-primary text-white">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
                         <h4 class="mb-0">President Vote Counts</h4>
                     </div>
                     <div class="card-body">
                         @foreach ($presidentVotes as $name => $count)
-                            <p class="d-flex justify-content-between">
-                                <span> {{ $name }}</span>
-                                <span class="badge bg-success text-white">{{ $count }} votes</span>
-                            </p>
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
                         @endforeach
                     </div>
                 </div>
             </div>
 
-            <!-- Section for Vice President -->
+
+            <!-- Vice President Votes -->
             <div class="col-md-6">
-                <div class="card shadow-sm border-0">
-                    <div class="card-header bg-secondary text-white">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
                         <h4 class="mb-0">Vice President Vote Counts</h4>
                     </div>
                     <div class="card-body">
                         @foreach ($vicePresidentVotes as $name => $count)
-                            <p class="d-flex justify-content-between">
-                                <span> {{ $name }}</span>
-                                <span class="badge bg-success">{{ $count }} votes</span>
-                            </p>
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
                         @endforeach
                     </div>
                 </div>
             </div>
 
-            <h4>General Secretary Vote Counts</h4>
-            @foreach ($secretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
 
-            <h4>Treasurer Vote Counts</h4>
-            @foreach ($treasurerVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
-
-
-            <h4>Joint Secretary Vote Counts</h4>
-            <h5>For Afrahim Mozid</h5>
-            @foreach ($firstjointsecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
-
-            <h5>For Mehedi Hasan Sarker</h5>
-            @foreach ($secondjointsecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
-
-            <h5>For Tahsin Khalid Borno</h5>
-            @foreach ($thirdjointsecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
-
-            <h5>For Nahid Hasan Sagor</h5>
-            @foreach ($fourthjointsecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
+            <!-- General Secretary Votes -->
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">General Secretary Vote Counts</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($secretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
 
-            <h4>Organising Secretary Vote Counts</h4>
-            @foreach ($organisingsecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
-
-            <h4>Office Secretary Vote Counts</h4>
-            @foreach ($officesecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
-
-
-            <h4>Legal, Social Service & Ethics Secretary Vote Counts</h4>
-            <h5>For Nazmin Nahar Shanta</h5>
-            @foreach ($legalsocialsecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
-
-
-            <h4>Broadcasting & Media Secretary Vote Counts</h4>
-            <h5>For Sharmin Mahmud (Neza)</h5>
-            @foreach ($broadcastingsecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
+            <!-- Treasurer Votes -->
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">Treasurer Vote Counts</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($treasurerVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
 
-            <h4>Education, Literature & Research Secretary Vote Counts</h4>
-            <h5>For Fabiha Mahzabin Rahman</h5>
-            @foreach ($educationsecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
+            {{-- Joint Secretary Votes --}}
+            <div class="card-header text-center">
+                <h4 class="mb-0">Joint Secretary Vote Counts</h4>
+            </div>
 
-            <h4>Sports & Cultural Secretary Vote Counts</h4>
-            <h5>For Rabbi Al Yasin</h5>
-            @foreach ($sportsculturalsecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Afrahim Mozid</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($firstjointsecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Mehedi Hasan Sarker</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($secondjointsecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Tahsin Khalid Borno</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($thirdjointsecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Nahid Hasan Sagor</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($fourthjointsecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
 
-            <h4>Publishing Secretary Vote Counts</h4>
-            <h5>For Nusrat Zaman</h5>
-            @foreach ($publishingsecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
+            {{-- Organising Secretary Votes --}}
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">Organising Secretary Vote Counts</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($organisingsecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">Office Secretary Vote Counts</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($officesecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
 
-            <h4>Hosting Secretary Vote Counts</h4>
-            <h5>For Jakia Sultana Sayma</h5>
-            @foreach ($hostingsecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
+            {{-- Legal, Social Service & Ethics Secretary Votes --}}
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center mb-2">
+                        <h4 class="mb-0">Legal, Social Service & Ethics Secretary Vote Counts</h4>
+                    </div>
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Nazmin Nahar Shanta</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($legalsocialsecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
 
-            <h4>Assistant Organising Secretary Vote Counts</h4>
-            <h5>For Mehedi Hasan</h5>
-            @foreach ($assistantorganisingecretaryVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
+            {{-- Broadcasting & Media Secretary Votes --}}
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center mb-2">
+                        <h4 class="mb-0">Broadcasting & Media Secretary Vote Counts</h4>
+                    </div>
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Sharmin Mahmud (Neza)</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($broadcastingsecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
 
-            <h4>Assistant Treasurer Vote Counts</h4>
-            @foreach ($assistanttreasurerVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
+            {{-- JEducation, Literature & Research Secretary Votes --}}
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center mb-2">
+                        <h4 class="mb-0">Education, Literature & Research Secretary Vote Counts</h4>
+                    </div>
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Fabiha Mahzabin Rahman</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($educationsecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            {{-- Sports & Cultural Secretary Votes --}}
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center mb-2">
+                        <h4 class="mb-0">Sports & Cultural Secretary Vote Counts</h4>
+                    </div>
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Rabbi Al Yasin</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($sportsculturalsecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            {{-- Publishing Secretary Votes --}}
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center mb-2">
+                        <h4 class="mb-0">Publishing Secretary Vote Counts</h4>
+                    </div>
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Nusrat Zaman</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($publishingsecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
 
-            <h4>Executive Member Vote Counts</h4>
-            <h5>For Emam Hossain Ridoy</h5>
-            @foreach ($firstexecutivememberVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
+            {{-- Hosting Secretary Votes --}}
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center mb-2">
+                        <h4 class="mb-0">Hosting Secretary Vote Counts</h4>
+                    </div>
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Jakia Sultana Sayma</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($hostingsecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
-            <h5>For Khadizatul Rima</h5>
-            @foreach ($secondexecutivememberVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
 
-            <h5>For Shihab Bari</h5>
-            @foreach ($thirdexecutivememberVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
+            {{-- Assistant Organising Secretary Votes --}}
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center mb-2">
+                        <h4 class="mb-0">Assistant Organising Secretary Vote Counts</h4>
+                    </div>
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Mehedi Hasan</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($assistantorganisingecretaryVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
-            <h5>For SM Nahid Sarwar Sumon</h5>
-            @foreach ($fourthexecutivememberVotes as $name => $count)
-                <p>{{ $name }}: {{ $count }} votes</p>
-            @endforeach
+            {{-- Assistant Treasurer Votes --}}
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">Assistant Treasurer Vote Counts</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($assistanttreasurerVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+
+            {{-- Executive Member Votes --}}
+            <div class="card-header text-center">
+                <h4 class="mb-0">Executive Member Vote Counts</h4>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Emam Hossain Ridoy</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($firstexecutivememberVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Khadizatul Rima</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($secondexecutivememberVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For Shihab Bari</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($thirdexecutivememberVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card premium-card shadow-lg border-0">
+                    <div class="card-header text-center">
+                        <h4 class="mb-0">For SM Nahid Sarwar Sumon</h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($fourthexecutivememberVotes as $name => $count)
+                        <div class="vote-count-item">
+                            <span>{{ $name }}</span>
+                            <span class="badge">{{ $count }} votes</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </body>
 
 </html>

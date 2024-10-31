@@ -9,8 +9,11 @@ Route::get('/', function () {
 
 
 Route::controller(VootController::class)->group(function () {
-    Route::get('/vooting', 'Vooting')->name('vooting');
-    Route::post('/vooting-store', 'VootingStore')->name('vootingstore');
-    Route::get('/vooting-result', 'VootingResult')->name('vootingresult');
+    Route::get('/vote', 'Vooting')->name('vooting');
+    Route::post('/vote-store', 'VootingStore')->name('vootingstore');
+    Route::get('/vote-result', 'VootingResult')->name('vootingresult');
+
+    Route::post('/validate-id', 'validateID')->name('validateID');
+
 
 });

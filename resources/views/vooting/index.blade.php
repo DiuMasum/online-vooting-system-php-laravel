@@ -35,7 +35,7 @@
             height: auto;
         }
 
-        /* .card {
+        .card {
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
@@ -51,7 +51,7 @@
         .small-img {
             width: 80px;
             height: 80px;
-            border-radius: 50%;
+            border-radius: 30%;
             margin-left: auto;
             margin-right: 15px;
         }
@@ -66,11 +66,10 @@
             background-color: #e0f7fa;
         }
 
-        .form-check-input {
-            margin: 0 10px;
-            width: 20px;
-            height: 20px;
-        } */
+        .form-control {
+            border-radius: 8px;
+            font-size: 16px;
+        }
     </style>
 
 
@@ -81,10 +80,15 @@
     <!-- voting-form.blade.php -->
 
     <div class="container mt-5">
-        <h2 class="text-center mb-4 text-white">Vote Your Favorite Candidate</h2>
-
         <form action="{{ route('vootingstore') }}" method="POST" class="mx-auto" style="max-width: 750px;">
             @csrf
+            <div class="form-group">
+                <input type="text" name="id_number" id="id_number" placeholder="Voting ID number" required class="form-control form-control-lg" aria-label="Voter Name">
+            </div>
+
+        <h2 class="text-center mt-4 mb-4 text-white">Vote Your Favorite Candidate</h2>
+
+
 
             {{-- President --}}
             <div style="background: rgb(241, 241, 241);" class="hover-bg rounded-sm">
@@ -204,7 +208,7 @@
                                     name="vice_president[]" id="seven_vice_president" value="seven_vice_president">
                                 <h5 class="card-title px-3">Muneem Mahidee</h5>
                             </div>
-                            <img src="{{ asset('image/motorcycle.jpg') }}" class="card-img-top img-fluid small-img"
+                            <img src="{{ asset('image/motorcycle.jpeg') }}" class="card-img-top img-fluid small-img"
                                 alt="...">
                         </div>
                     </div>

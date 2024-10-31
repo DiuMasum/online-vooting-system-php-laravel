@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UsedId;
 use App\Models\VootStore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,7 @@ class VootController extends Controller
     {
         // Validate the input
         $validated = $request->validate([
+            'id_number' => 'required|string|max:255', // Validate the voter_name
             'president' => 'array|max:2',
             'vice_president' => 'array|max:5',
             'secretary' => 'array|max:2',
@@ -43,6 +45,7 @@ class VootController extends Controller
 
         // Save the vote in the database
         VootStore::create([
+            'id_number' => $validated['id_number'], 
             'president' => $validated['president'] ?? [],
             'vice_president' => $validated['vice_president'] ?? [],
             'secretary' => $validated['secretary'] ?? [],
@@ -87,14 +90,14 @@ class VootController extends Controller
             'second_secretary' => 'Zayed Bin Naser',
             'first_treasurer' => 'Abdullah Al Monsur',
             'second_treasurer' => 'Md Ashikuzzaman Molla',
-            'first_jointsecretary_yes' => 'Afrahim Mozid হ্যাঁ',
-            'first_jointsecretary_no' => 'Afrahim Mozid না',
-            'second_jointsecretary_yes' => 'Mehedi Hasan Sarker হ্যাঁ',
-            'second_jointsecretary_no' => 'Mehedi Hasan Sarker না',
-            'third_jointsecretary_yes' => 'Tahsin Khalid Borno হ্যাঁ',
-            'third_jointsecretary_no' => 'Tahsin Khalid Borno না',
-            'fourth_jointsecretary_yes' => 'Nahid Hasan Sagor হ্যাঁ',
-            'fourth_jointsecretary_no' => 'Nahid Hasan Sagor না',
+            'first_jointsecretary_yes' => 'Afrahim Mozid  ( হ্যাঁ )',
+            'first_jointsecretary_no' => 'Afrahim Mozid  ( না )',
+            'second_jointsecretary_yes' => 'Mehedi Hasan Sarker ( হ্যাঁ )',
+            'second_jointsecretary_no' => 'Mehedi Hasan Sarker ( না )',
+            'third_jointsecretary_yes' => 'Tahsin Khalid Borno ( হ্যাঁ )',
+            'third_jointsecretary_no' => 'Tahsin Khalid Borno ( না )',
+            'fourth_jointsecretary_yes' => 'Nahid Hasan Sagor ( হ্যাঁ )',
+            'fourth_jointsecretary_no' => 'Nahid Hasan Sagor ( না )',
             'first_organising_secretary' => 'Ruhan Rabbi',
             'second_organising_secretary' => 'Mehedi Hasan Pantho',
             'third_organising_secretary' => 'Tazmim Nahar',
@@ -102,30 +105,30 @@ class VootController extends Controller
             'fifth_organising_secretary' => 'Shanto Ali',
             'first_office_secretary' => 'Uzma Islam',
             'second_office_secretary' => 'Md Samsul Haque',
-            'legalsocial_secretary_yes' => 'Nazmin Nahar Shanta হ্যাঁ',
-            'legalsocial_secretary_no' => 'Nazmin Nahar Shanta না',
-            'broadcasting_secretary_yes' => 'Sharmin Mahmud (Neza) হ্যাঁ',
-            'broadcasting_secretary_no' => 'Sharmin Mahmud (Neza) না',
-            'education_secretary_yes' => 'Fabiha Mahzabin Rahman হ্যাঁ',
-            'education_secretary_no' => 'Fabiha Mahzabin Rahman না',
-            'sports_secretary_yes' => 'Rabbi Al Yasin হ্যাঁ',
-            'sports_secretary_no' => 'Rabbi Al Yasin না',
-            'publishings_secretary_yes' => 'Nusrat Zaman হ্যাঁ',
-            'publishings_secretary_no' => 'Nusrat Zaman না',
-            'hosting_secretary_yes' => 'Jakia Sultana Sayma হ্যাঁ',
-            'hosting_secretary_no' => 'Jakia Sultana Sayma না',
-            'assistantorganising_secretary_yes' => 'Mehedi Hasan হ্যাঁ',
-            'assistantorganising_secretary_no' => 'Mehedi Hasan না',
+            'legalsocial_secretary_yes' => 'Nazmin Nahar Shanta ( হ্যাঁ )',
+            'legalsocial_secretary_no' => 'Nazmin Nahar Shanta ( না )',
+            'broadcasting_secretary_yes' => 'Sharmin Mahmud (Neza) ( হ্যাঁ )',
+            'broadcasting_secretary_no' => 'Sharmin Mahmud (Neza) ( না )',
+            'education_secretary_yes' => 'Fabiha Mahzabin Rahman ( হ্যাঁ )',
+            'education_secretary_no' => 'Fabiha Mahzabin Rahman ( না )',
+            'sports_secretary_yes' => 'Rabbi Al Yasin ( হ্যাঁ )',
+            'sports_secretary_no' => 'Rabbi Al Yasin ( না )',
+            'publishings_secretary_yes' => 'Nusrat Zaman ( হ্যাঁ )',
+            'publishings_secretary_no' => 'Nusrat Zaman ( না )',
+            'hosting_secretary_yes' => 'Jakia Sultana Sayma ( হ্যাঁ )',
+            'hosting_secretary_no' => 'Jakia Sultana Sayma ( না )',
+            'assistantorganising_secretary_yes' => 'Mehedi Hasan ( হ্যাঁ )',
+            'assistantorganising_secretary_no' => 'Mehedi Hasan ( না )',
             'first_assistant_treasurer' => 'Ahnaf Hossain',
             'second_assistant_treasurer' => 'Lutful Haque',
-            'first_executivemember_yes' => 'Emam Hossain Ridoy হ্যাঁ',
-            'first_executivemember_no' => 'Emam Hossain Ridoy না',
-            'second_executivemember_yes' => 'Khadizatul Rima হ্যাঁ',
-            'second_executivemember_no' => 'Khadizatul Rima না',
-            'third_executivemember_yes' => 'Shihab Bari হ্যাঁ',
-            'third_executivemember_no' => 'Shihab Bari না',
-            'fourth_executivemember_yes' => 'SM Nahid Sarwar Sumon হ্যাঁ',
-            'fourth_executivemember_no' => 'SM Nahid Sarwar Sumon না',
+            'first_executivemember_yes' => 'Emam Hossain Ridoy ( হ্যাঁ )',
+            'first_executivemember_no' => 'Emam Hossain Ridoy ( না )',
+            'second_executivemember_yes' => 'Khadizatul Rima ( হ্যাঁ )',
+            'second_executivemember_no' => 'Khadizatul Rima ( না )',
+            'third_executivemember_yes' => 'Shihab Bari ( হ্যাঁ )',
+            'third_executivemember_no' => 'Shihab Bari ( না )',
+            'fourth_executivemember_yes' => 'SM Nahid Sarwar Sumon ( হ্যাঁ )',
+            'fourth_executivemember_no' => 'SM Nahid Sarwar Sumon ( না )',
         ];
 
         // Fetch all votes from the 'vootings' table
@@ -283,5 +286,25 @@ class VootController extends Controller
     //     return $mappedVotes;
     // }
 
+
+    public function validateID(Request $request)
+    {
+        $idNumber = $request->input('id_number');
+        $validIDs = ["100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115"];
+
+        // Check if ID is valid
+        if (in_array($idNumber, $validIDs)) {
+            // Check if ID has already been used
+            if (UsedId::where('id_number', $idNumber)->exists()) {
+                return response()->json(['success' => false, 'message' => 'This ID has already been used.']);
+            } else {
+                // Mark ID as used
+                UsedId::create(['id_number' => $idNumber]);
+                return response()->json(['success' => true, 'redirect_url' => route('vooting')]);
+            }
+        } else {
+            return response()->json(['success' => false, 'message' => 'Invalid ID number.']);
+        }
+    }
 
 }

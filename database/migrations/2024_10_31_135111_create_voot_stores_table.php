@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('voot_stores', function (Blueprint $table) {
             $table->id();
+            $table->string('id_number')->unique();
             $table->json('president')->nullable();
             $table->json('vice_president')->nullable();
             $table->json('secretary')->nullable();
