@@ -13,80 +13,32 @@
             background: rgb(4, 32, 66);
             color: #495057;
         }
-
-        .premium-card {
-            background: #ffffff;
-            border-radius: 8px;
-            transition: box-shadow 0.3s ease;
-            padding: 1rem;
-        }
-
-        .premium-card:hover {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, #6c757d, #343a40);
-            color: #ffffff;
-            border-radius: 8px 8px 0 0;
-            padding: 0.75rem;
-        }
-
-        .badge {
-            font-size: 1rem;
-            padding: 0.5rem 0.75rem;
-            background-color: #28a745;
-            color: white;
-        }
-
-        h4,
-        h2 {
-            font-weight: bold;
-        }
-
-        h2.display-4 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #007bff;
-        }
-
-        .vote-count-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .vote-count-item {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            /* Ensures it fills the parent container */
-        }
     </style>
 </head>
 
 <body>
-
     <div class="container mt-5 mb-5">
-        <div class="row g-4">
-            <div class="col-md-12">
-                <div class="card premium-card shadow-lg border-0">
-                    <div class="card-header text-center">
-                        <h4 class="mb-0">Vote Completed Id Number</h4>
-                    </div>
-                    @foreach ($votecompleteid as $votecomplete)
-                        <div class="card-body">
-                            <div class="vote-count-item"
-                                style="display: flex; justify-content: center; align-items: center; height: 100%;">
-                                <span class="text-center">{{ $votecomplete->id_number }}</span>
-                            </div>
-                        </div>
-                    @endforeach
-
-                </div>
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-primary text-white text-center py-4">
+                <h4 class="mb-0 fw-bold">Vote Completed ID Number</h4>
+            </div>
+            <div class="card-body p-4">
+                <table class="table table-bordered table-hover text-center align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Sl</th>
+                            <th scope="col">Voter ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($votecompleteid as $index => $votecomplete)
+                            <tr class="table-light">
+                                <td class="fw-semibold">{{ $index + 1 }}</td>
+                                <td class="fw-semibold">{{ $votecomplete->id_number }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -98,5 +50,6 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
     </script>
 </body>
+
 
 </html>

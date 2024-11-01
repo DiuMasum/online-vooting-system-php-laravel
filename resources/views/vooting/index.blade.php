@@ -785,7 +785,7 @@
 
     <script>
         document.querySelector('form').addEventListener('submit', function(event) {
-            const allowedIDs = ["201", "202", "203", "204", "205", "206", "207", "208", "209", "210"];
+            const allowedIDs = ["301", "302", "303", "304", "305", "306", "307", "308", "309", "310"];
             const idNumber = document.getElementById('id_number').value.trim();
 
             if (!allowedIDs.includes(idNumber)) {
@@ -803,7 +803,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-fourth-executive-member:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -817,7 +817,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-third-executive-member:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -831,7 +831,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-second-executive-member:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -845,7 +845,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-first-executive-member:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -859,7 +859,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-assistant-treasurer:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only 1 candidates for Assistant Treasurer.');
+                    alert('You can vote only 1 candidates for Assistant Treasurer.');
                     checkbox.checked = false;
                 }
             });
@@ -873,7 +873,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-assistant-organising-secretary:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -887,7 +887,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-hosting-secretary:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -901,7 +901,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-publishing-secretary:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -915,7 +915,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-sports-cultural-secretary:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -929,7 +929,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-education-literature-secretary:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -943,7 +943,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-broadcasting-media-secretary:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -957,7 +957,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-legal-social-secretary:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -971,7 +971,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-office-secretary:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only 1 candidates for Offile Secretary.');
+                    alert('You can vote only 1 candidates for Offile Secretary.');
                     checkbox.checked = false;
                 }
             });
@@ -985,7 +985,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-organising-secretary:checked');
 
                 if (selected.length > 4) {
-                    alert('You can voot only 4 candidates for Organising Secretary.');
+                    alert('You can vote only 4 candidates for Organising Secretary.');
                     checkbox.checked = false;
                 }
             });
@@ -999,7 +999,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-fourth-joint-secretary:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -1013,7 +1013,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-third-joint-secretary:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -1027,7 +1027,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-second-joint-secretary:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -1041,7 +1041,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-first-joint-secretary:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only হ্যাঁ / না');
+                    alert('You can vote only হ্যাঁ / না');
                     checkbox.checked = false;
                 }
             });
@@ -1055,7 +1055,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-treasurer:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only 1 candidates for Treasurer.');
+                    alert('You can vote only 1 candidates for Treasurer.');
                     checkbox.checked = false;
                 }
             });
@@ -1069,7 +1069,7 @@
                 const selected = document.querySelectorAll('.secretary-checkbox-president:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only 1 candidates for Secretary.');
+                    alert('You can vote only 1 candidates for Secretary.');
                     checkbox.checked = false;
                 }
             });
@@ -1083,7 +1083,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-vice:checked');
 
                 if (selected.length > 5) {
-                    alert('You can voot only 5 candidates for Vice President.');
+                    alert('You can vote only 5 candidates for Vice President.');
                     checkbox.checked = false;
                 }
             });
@@ -1097,7 +1097,7 @@
                 const selected = document.querySelectorAll('.candidate-checkbox-president:checked');
 
                 if (selected.length > 1) {
-                    alert('You can voot only 1 candidates for President.');
+                    alert('You can vote only 1 candidates for President.');
                     checkbox.checked = false;
                 }
             });

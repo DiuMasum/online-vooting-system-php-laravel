@@ -17,7 +17,7 @@ class VootController extends Controller
     public function VootingStore(Request $request)
     {
          // Allowed ID numbers
-        $allowedIDs = ["201", "202", "203", "204", "205", "206", "207", "208", "209", "210"];
+        $allowedIDs = ["301", "302", "303", "304", "305", "306", "307", "308", "309", "310"];
 
         // Retrieve the ID number from the form input
         $idNumber = $request->input('id_number');
@@ -329,10 +329,11 @@ class VootController extends Controller
 
 
     public function VoteCompletedId(){
-        $votecompleteid = VootStore::latest()->get();
-
+        // Retrieve and order by id in ascending order
+        $votecompleteid = VootStore::orderBy('id', 'asc')->get();
         return view('vooting.votecompletedid', compact('votecompleteid'));
     }
+
 
     public function ThankYou(){
         return view('vooting.thankyou');

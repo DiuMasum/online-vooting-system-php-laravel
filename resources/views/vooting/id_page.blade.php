@@ -56,8 +56,8 @@
         use Carbon\Carbon;
 
         // Set the voting start and end times in the Dhaka timezone
-        $votingStartTime = Carbon::createFromFormat('d/m/Y H:i', '02/11/2024 06:00', 'Asia/Dhaka');
-        $votingEndTime = Carbon::createFromFormat('d/m/Y H:i', '02/11/2024 15:00', 'Asia/Dhaka');
+        $votingStartTime = Carbon::createFromFormat('d/m/Y H:i', '02/11/2024 05:00', 'Asia/Dhaka');
+        $votingEndTime = Carbon::createFromFormat('d/m/Y H:i', '02/11/2024 16:00', 'Asia/Dhaka');
         $currentTime = Carbon::now('Asia/Dhaka');
 
         // Check if the current time is within the voting window
